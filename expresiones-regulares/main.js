@@ -1,12 +1,24 @@
-import './style.css';
+import './style.css'
 
-const cadena = '394858';
-let expresionRegular = /[01]+/;
-const parrafo = document.createElement('p');
-
-if (expresionRegular.test(cadena)) {
-  parrafo.textContent = 'Si hizo match ✅';
-} else {
-  parrafo.textContent = 'No hizo match 🚩';
+window.onload = function() {
+  const temp = document.getElementById('inputform')
+  temp.addEventListener('submit', getInputValue)
 }
-document.body.appendChild(parrafo);
+
+function getInputValue(e) {
+  e.preventDefault()
+  console.log("getInputValue")
+  const testedString = document.getElementById('testedString').value
+
+  const expresionRegular = /expresiones/;
+  const parrafo = document.createElement('p');
+
+  if (expresionRegular.test(testedString)){
+    parrafo.textContent = 'Si hizo match!, Todo bien';
+  }
+  else{
+    parrafo.textContent = 'No hizo match. Buuu';
+  }
+  let mainDiv = document.getElementById('main-div')
+  mainDiv.appendChild(parrafo)
+}
