@@ -31,7 +31,7 @@ function Ejercicio02() {
     <main>
     <div className='card-element-wrapper'>
         <div className='card-element-header'>
-            <h2>Automatas I: Ejercicio 1</h2>
+            <h2>Automatas I: Ejercicio 2</h2>
         </div>
         <div className='card-element-content'>
           <label className='text-center'>Crea un automata que simule el <br />comportamiento de un apagador</label>
