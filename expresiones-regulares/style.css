@@ -30,13 +30,9 @@ body{
     color: var(--text-Colors);
     
     background: var(--main-backgrounds-colors);
-    padding: 1% 10%;
-
-
+    padding: 5%;
 }
-.nada{
-    padding: 1% 10%;
-}
+
 div{
     text-align: center;
     align-items: center;
@@ -44,28 +40,30 @@ div{
     align-self: center;
     align-content: center;
     flex: auto;
-    flex-direction: row;
+    flex-direction: column;
 
     display: flex;
     align-items: center;
     justify-content: center;
-    
-    background-color: var(--div-backgrounds-colors);
-    color: #E9C46A;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    width: 40%;
-    border-radius: 4%;
     padding: 3%;
     color: inherit;
-
-    display: grid;
+    
+    /* display: grid;
     grid-template-rows: 
-        repeat(
-            auto-fit,
-            minmax(150px, 1fr)
-        );
+    repeat(
+        auto-fit,
+        minmax(150px, 1fr)
+    ); */
+        
+    border-radius: 4%;
+    background-color: var(--div-backgrounds-colors);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     gap: 10px;
-    max-width: 1000px;
+    width: 65%;
+    /* max-width: 1000px; */
+}
+section{
+    width: 100%;
 }
 .divHeader1{
     width: 75%;
@@ -76,6 +74,9 @@ form{
     align-items: center;
     flex: content;
     flex-direction: column;
+}
+form > section{
+    max-width: 100%;
 }
 h1{
     padding: 1%;
@@ -127,15 +128,15 @@ select{
      text-shadow: 0px 0px 0px rgba(66,66,66,.75);
 }
 textarea{
-    width: 70%;
+    resize: none;
+    width: 100%;
     max-width: 90%;
-    height: 80px;
-    background-color:var(--text-input-bg-color);
+    height: 350px;
+    background-color: var(--text-input-bg-color);
     cursor: auto;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     transition-duration: 0.1s;
     margin: 2%;
-    max-width: inherit;
 
         padding: 5px;
         font-size: 16px;

@@ -12,8 +12,8 @@ window.onload = function() {
 function checkRegularExpresion(e) {
   e.preventDefault()
   console.clear()
-  const regexPattern = document.getElementById('regexPattern').value
-  console.log('Patron de la expresion regular: ', regexPattern)
+  const regexPattern = document.getElementById('regexPattern').value;
+  console.log('Patron de la expresion regular: ', regexPattern);
 
   // const selectRegExFlag = document.getElementById('selectRegExFlag').value
   // console.log('Bandera selecionada: ', selectRegExFlag)
@@ -30,12 +30,19 @@ function checkRegularExpresion(e) {
   const expresionRegular = new RegExp(regexPattern, selectedFlags);
   const results = document.getElementById('results');
   
-  const concurrencias = testedString.match(expresionRegular)
-  console.log('asdasd');
+  const concurrencias = testedString.match(expresionRegular);
+  console.log(concurrencias);
 
   if (expresionRegular.test(testedString)){
-    const a = concurrencias.length
-    results.textContent = `Si hizo match!,\nNumero de concurrencias: ${concurrencias.length} \nConcurrencias: ${concurrencias.toString()}`;
+    let contador = 0;
+    const numeroCoincidencias = concurrencias.length;
+    let resultedString = `Si hizo match!,\nNumero de concurrencias: ${numeroCoincidencias}\nConcurrencias: \n`;
+    // results.textContent = `Si hizo match!,\nNumero de concurrencias: ${concurrencias.length} \n'Concurrencias: ${concurrencias.toString()}`;
+    while (contador < numeroCoincidencias) {
+      resultedString += concurrencias[contador] +  "\n";
+      contador++;
+    }
+    results.textContent = resultedString;
   }
   else{
     results.textContent = 'No hizo match. Buuu';
