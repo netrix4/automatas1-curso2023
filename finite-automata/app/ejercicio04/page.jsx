@@ -43,7 +43,7 @@ function Ejercicio03() {
         <link rel='stylesheet' href='globals.css'/>
         <div className='card-element-wrapper'>
             <div className='card-element-header'>
-                <h2>Automatas I: Ejercicio 5</h2>
+                <h2>Automatas I: Ejercicio 4</h2>
             </div>
             <div className='card-element-content'>
                 <label className='text-center' htmlFor="inputAutom">Construya un DFA que acepte todas las cadenas sobre (a,b),<br/> las cuales empiezan y terminan con DIFERENTE simbolo</label>

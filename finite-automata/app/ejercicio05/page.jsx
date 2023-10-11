@@ -52,7 +52,7 @@ function Ejercicio05() {
     <link rel='stylesheet' href='globals.css'/>
     <div className='card-element-wrapper'>
         <div className='card-element-header'>
-            <h2>Automatas I: Ejercicio 1</h2>
+            <h2>Automatas I: Ejercicio 5</h2>
         </div>
         <div className='card-element-content'>
             <label htmlFor="inputAutom5" className='text-center'>Construye un DFA que acepete todas las cadenas<br/>sobre (a,b) donde cada "a" deberá ser seguida por una "b"</label>
