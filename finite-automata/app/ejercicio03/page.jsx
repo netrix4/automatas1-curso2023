@@ -24,7 +24,7 @@ function Ejercicio03() {
             arrayCaracteresDePalabra = palabra.split('')
             const longitud = arrayCaracteresDePalabra.length;
             // estado_q_actual = 0;
-            // let isStringAccepted = (arrayCaracteresDePalabra[0] == arrayCaracteresDePalabra[longitud-1]) ? true : false
+            // let isStringAccepted = (arrayCaracteresDePalabra[0] == arrayCaracteresDePalabra[longitud-1]) ? true : false; 
 
             if (arrayCaracteresDePalabra[0] == arrayCaracteresDePalabra[longitud-1]) {
                 console.log("Cadena SÍ cumple con el automata. Aceptada");

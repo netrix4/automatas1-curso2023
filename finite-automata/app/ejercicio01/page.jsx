@@ -18,6 +18,7 @@ function Ejercicio01() {
         let longitudArray = 0;
         let i = 0;
         let bandera = true;
+        
         const isValidCharacter = new RegExp('[a-z0-9]');
         
         // const isLetter = new RegExp('[a-z]')
