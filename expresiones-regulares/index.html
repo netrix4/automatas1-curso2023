@@ -1,12 +1,51 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="stylesheet" href="style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Expresiones Regulares</title>
   </head>
-  <body>
+  
+  <body class="body">
     <script type="module" src="/main.js"></script>
+    <div id="main-div">
+      <section>
+        <h1>Examen 1: Expresiones Regulares</h1>
+      </section>
+
+      <section>
+        <form action="" id="inputform">
+          <label for="regexPattern">Patron:</label>
+          <input type="text" id="regexPattern" name="regexPattern" placeholder="Patrón /.../ (Ya incluye /)">
+          <!-- <select name="selectRegExFlag" id="selectRegExFlag">
+            <option value="" >Standar (/)</option>
+            <option value="g" selected>Global (/g)</option>
+            <option value="i">Case Insensitive (/i)</option>
+          </select><br> -->
+  
+            <section>
+              <input class="inputCheckBox" type="checkbox" id="cbStandar" name="cbStandar" value="">
+              <label class="checkBoxLabel" for="cbStandar"> Standar (/)</label><br>
+              <input class="inputCheckBox" type="checkbox" id="cbGlobal" name="cbGlobal" value="g" checked>
+              <label class="checkBoxLabel" for="cbGlobal"> Global (/g)</label><br>
+              <input class="inputCheckBox" type="checkbox" id="cbCaseInsensitive" name="cbCaseInsensitive" value="i">
+              <label class="checkBoxLabel" for="cbCaseInsensitive"> Case Insensitive (/i)</label><br>
+  
+            </section>
+  
+  
+  
+          <label for="testedString">Cadena A Evaluar:</label><br>
+          <textarea type="text" id="testedString" name="testedString" placeholder="Cadena a verificar"></textarea><br>
+          <button id="verify" type="submit" >Verificar</button>
+          <button id="clearButton" type="button" >Limpiar</button><br>
+          <textarea type="text" id="results" name="results" placeholder="Aqui aparecerán los resultados"></textarea>
+  
+        </form>
+      </section>
+
+    </div>
   </body>
 </html>
