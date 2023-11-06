@@ -85,33 +85,33 @@ const Lector = () => {
   //  QUe es blob? R= El constructor Blob() retorna un nuevo objeto Blob . El contenido del blob consiste en la concatenación de los valores obtenidos en el parrametro array.
 
   const generarArchivoTxt = () => {
-  const lineas = [];
+    const lineas = [];
 
-  coincidencias.forEach((item) => {
-    if (item.esPalabraClave) {
-      lineas.push(`La palabra "${item.palabra}" es una palabra clave.`);
-    } else {
-      lineas.push(`La palabra "${item.palabra}" no es una palabra clave.`);
-    }
-  });
+    coincidencias.forEach((item) => {
+      if (item.esPalabraClave) {
+        lineas.push(`La palabra "${item.palabra}" es una palabra clave.`);
+      } else {
+        lineas.push(`La palabra "${item.palabra}" no es una palabra clave.`);
+      }
+    });
 
-  const textoArchivo = lineas.join('\n');
+    const textoArchivo = lineas.join('\n');
 
-  const archivoBlob = new Blob([textoArchivo], { type: 'text/plain' });
+    const archivoBlob = new Blob([textoArchivo], { type: 'text/plain' });
 
-  const archivoURL = URL.createObjectURL(archivoBlob);
-  //despues creamos una url para Blob y se crea tambien  un enlace de descarga que contiene un nombre de archivo
+    const archivoURL = URL.createObjectURL(archivoBlob);
+    //despues creamos una url para Blob y se crea tambien  un enlace de descarga que contiene un nombre de archivo
 
-  // se creo el elemento a para que el usuario si desea descargar el archivo lo haga, ya que en la pagina ya imprime el resultado de si la palabra es clave o no
-  //se nos hizo conveniente crear esto para no llenarnos de archivos de de pruebas.
-  
-  const enlaceDescarga = document.createElement('a');
-  enlaceDescarga.href = archivoURL;
-  enlaceDescarga.download = 'resultado.txt';
-  enlaceDescarga.click();
-  //Con esta linea liberamos la memoria para evitar errores, ya que con cada carga de archivo se necesita el url para la descarga
-  URL.revokeObjectURL(archivoURL);
-};
+    // se creo el elemento a para que el usuario si desea descargar el archivo lo haga, ya que en la pagina ya imprime el resultado de si la palabra es clave o no
+    //se nos hizo conveniente crear esto para no llenarnos de archivos de de pruebas.
+    
+    const enlaceDescarga = document.createElement('a');
+    enlaceDescarga.href = archivoURL;
+    enlaceDescarga.download = 'resultado.txt';
+    enlaceDescarga.click();
+    //Con esta linea liberamos la memoria para evitar errores, ya que con cada carga de archivo se necesita el url para la descarga
+    URL.revokeObjectURL(archivoURL);
+  };
 
   const limpiar = () => {
     setContenido('');

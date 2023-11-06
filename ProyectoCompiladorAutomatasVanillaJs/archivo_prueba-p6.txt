@@ -1,10 +1,10 @@
 main a , con como hacer palabras
 total
-varios
+varios + int nada
 palabra
 Void
-int
-double
+int | TEST
+double & int
 doble
 mexico
 a
