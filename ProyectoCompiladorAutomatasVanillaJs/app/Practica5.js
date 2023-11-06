@@ -1,7 +1,6 @@
-import _DiccionarioCadenas from "../resources/DiccionarioCadenas";
+console.log("Reconocer palabras reservadas");
 
-console.log("Abrir archivo .txt");
-console.log(_DiccionarioCadenas[0].id);
+import * as _diccCadenas from "../resources/DiccionarioCadenas.js";
 
 const selectedFile = document.getElementById('selectedFile')
 const cardContent = document.getElementById('cardContent')
@@ -11,17 +10,15 @@ selectedFile.addEventListener('change', onSelectedFileChanged)
 function onSelectedFileChanged() {
     const fileContent = document.createElement('p')
     const filteredFileContent = document.createElement('textarea')
-
+    const downloadButton = document.createElement('button')
+    downloadButton.addEventListener('click', onDownload)
+    
     const fileReader = new FileReader();
-    // const regex = new RegExp('[a-zA-Z0-9]\w*', 'gm');
-    const findCommentsRegex = /(\/\/.+)|(\/\*[\s\S]+?\*\/)/gm    // Encontrar comentarios
-    // const findEnterRegex = /(.\n)/gm                             // econtrar enters en el texto (este no sirve mucho)
-    const isInvalidContentRegex = /[^01,.\n\t ]/gm;                 // ecnontrar caracteres no validos
-    const findValidWordsRegex = /[01]+/gm                        // Encontrar palabras validas
+    const findWordsRegex = /\s+/gm
 
     let originalFileString;
-    let filtredArray;
-    let stringWithoutComments;
+    let everyWordInFile;
+    let analizedStrings;
     let filtredString;
 
     fileReader.readAsText(selectedFile.files[0])
@@ -30,22 +27,46 @@ function onSelectedFileChanged() {
     fileReader.onload = () => {
         originalFileString = fileReader.result
 
-        stringWithoutComments = originalFileString.replace(findCommentsRegex, '')
-        console.log(stringWithoutComments);
-                
-        if (isInvalidContentRegex.test(stringWithoutComments)) {
-            console.log('Invalid',`${selectedFile.files[0].name}`,' file');
-            alert('Texto invalido encontrado en el archivo de entrada')
-        } else {
-            filtredArray = stringWithoutComments.match(findValidWordsRegex)
-            console.log(filtredArray);
-            filtredString = `Coicidencias encontradas: ${filtredArray.length} ` + filtredArray.toString()
+        everyWordInFile = originalFileString.split(findWordsRegex)
+        console.log(everyWordInFile);
+        analizedStrings = [];
 
-            fileContent.textContent = originalFileString
-            filteredFileContent.textContent = filtredString
+        everyWordInFile.forEach((item) => {
+            const isReservedWord = Object.values(_diccCadenas.diccionario[6]).includes(item);
+            analizedStrings.push({ item, isReservedWord });
+        });
 
-            cardContent.appendChild(fileContent)
-            cardContent.appendChild(filteredFileContent)
-        }
+        filtredString = 'Coicidencias encontradas: ';
+
+        analizedStrings.forEach((item) => {
+            if (item.isReservedWord) {
+                filtredString = filtredString.concat(item.item + ' - PR\n');   
+            } else {
+                filtredString = filtredString.concat(item.item + ' - ID\n');
+            }
+        });
+
+        originalFileString = 'Texto original: \n' + originalFileString
+
+        fileContent.textContent = originalFileString
+        filteredFileContent.textContent = filtredString
+        downloadButton.textContent = 'Descargar'
+
+        cardContent.appendChild(fileContent)
+        cardContent.appendChild(filteredFileContent)
+        cardContent.appendChild(downloadButton)
+
+    }
+    function onDownload() {
+        console.log(filtredString);
+        const archivoBlob = new Blob([filtredString], { type: 'text/plain' });
+
+        const archivoURL = URL.createObjectURL(archivoBlob);
+        
+        const enlaceDescarga = document.createElement('a');
+        enlaceDescarga.href = archivoURL;
+        enlaceDescarga.download = 'output.txt';
+        enlaceDescarga.click();
+        URL.revokeObjectURL(archivoURL);
     }
 }
